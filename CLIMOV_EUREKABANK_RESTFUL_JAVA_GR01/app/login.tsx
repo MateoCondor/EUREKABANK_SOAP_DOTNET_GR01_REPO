@@ -11,6 +11,7 @@ import {
 } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useAuth } from '@/context/AuthContext';
+import { ScreenBackground } from '@/components/screen-background';
 
 export default function LoginScreen() {
   const { login } = useAuth();
@@ -42,14 +43,15 @@ export default function LoginScreen() {
   const isDark = colorScheme === 'dark';
 
   return (
-    <KeyboardAvoidingView
-      style={[styles.container, { backgroundColor: isDark ? '#0F0F23' : '#F0F4F8' }]}
-      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-    >
-      <ScrollView
-        contentContainerStyle={styles.scrollContent}
-        keyboardShouldPersistTaps="handled"
+    <ScreenBackground>
+      <KeyboardAvoidingView
+        style={styles.container}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       >
+        <ScrollView
+          contentContainerStyle={styles.scrollContent}
+          keyboardShouldPersistTaps="handled"
+        >
         {/* Decorative top gradient bar */}
         <View style={[styles.topBar, { backgroundColor: '#0D7377' }]}>
           <View style={styles.topBarInner}>
@@ -73,7 +75,7 @@ export default function LoginScreen() {
               variant="bodyMedium"
               style={[styles.brandSubtitle, { color: isDark ? '#94A3B8' : '#6B7280' }]}
             >
-              {Platform.OS === 'web' ? 'Cliente WEB' : 'Cliente MOVIL'}: SOAP - DOTNET
+              {Platform.OS === 'web' ? 'Cliente WEB' : 'Cliente MOVIL'}: SOAP - DOTNET 
             </Text>
           </View>
 
@@ -157,8 +159,9 @@ export default function LoginScreen() {
             © 2026 EurekaBank • Arquitectura GR01
           </Text>
         </View>
-      </ScrollView>
-    </KeyboardAvoidingView>
+        </ScrollView>
+      </KeyboardAvoidingView>
+    </ScreenBackground>
   );
 }
 
