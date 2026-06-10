@@ -33,7 +33,7 @@ internal class Program
         // 3. Registrar el Interceptor de Red
         services.AddTransient<AuthInterceptor>();
 
-        string baseUrl = "http://localhost:5170";
+        string baseUrl = "http://10.40.12.77:5170";
 
         // 4. Registrar los Clientes HTTP usando una instancia única de HttpClient compartida
         // Esto replica perfectamente tu lógica de Java usando HttpClientFactory interno de Refit
